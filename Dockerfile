@@ -3,7 +3,7 @@ MAINTAINER Michael Venezia <mike@cc.com>
 
 # INSTALL HHVM
 RUN	apt-get update && \
-	apt-get install -y software-properties-common wget supervisor && \
+	apt-get install -y software-properties-common wget && \
 	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449 && \
 	add-apt-repository 'deb http://dl.hhvm.com/ubuntu trusty main' && \
 	apt-get update && \
@@ -21,13 +21,10 @@ RUN cd $WORKDIR && \
     chmod +x phpunit.phar && \
     mv phpunit.phar /usr/local/bin/phpunit
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN service supervisor start
-ADD run.sh /run.sh
-RUN chmod a+x /run.sh
 
+# Let's modify the php.ini per whatever is in our folder
 ADD php.ini /etc/hhvm/php.ini
 
-#ENTRYPOINT ["/run.sh"]
-CMD ["/run.sh"]
+# And this is how we boot the system up
+CMD /usr/bin/hhvm --config /etc/hhvm/php.ini --config /etc/hhvm/server.ini --user www-data --mode server -vPidFile=/var/run/hhvm/pid
 
