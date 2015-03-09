@@ -15,7 +15,8 @@ RUN	apt-get update && \
 	wget https://phar.phpunit.de/phpunit.phar && \
 	chmod +x phpunit.phar && \
 	mv phpunit.phar /usr/local/bin/phpunit && \
-	apt-get remove -y wget software-properties-common
+	apt-get remove -y wget software-properties-common && \
+	apt-get autoremove -y
 
 # What ports should we expose
 EXPOSE 9000 9001
