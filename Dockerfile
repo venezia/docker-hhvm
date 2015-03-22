@@ -11,7 +11,7 @@ RUN	apt-get update && \
 	apt-get remove -y software-properties-common && \
 	apt-get autoremove -y
 
-# What ports should we expose
+# What ports should we expose - 9001 is the admin port
 EXPOSE 9000 9001
 
 # Let's modify the php.ini per whatever is in our folder
