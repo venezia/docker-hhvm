@@ -5,7 +5,7 @@ MAINTAINER Michael Venezia <mike@cc.com>
 RUN	apt-get update && \
 	apt-get install -y software-properties-common && \
 	apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449 && \
-	add-apt-repository 'deb http://dl.hhvm.com/ubuntu utopic main' && \
+	add-apt-repository 'deb http://dl.hhvm.com/ubuntu utopic-lts-3.6 main' && \
 	apt-get update && \
 	apt-get install -y hhvm && \
 	apt-get upgrade -y && \
