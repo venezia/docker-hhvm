@@ -8,6 +8,7 @@ RUN	apt-get update && \
 	add-apt-repository 'deb http://dl.hhvm.com/ubuntu utopic main' && \
 	apt-get update && \
 	apt-get install -y hhvm && \
+	apt-get upgrade -y && \
 	apt-get remove -y software-properties-common && \
 	apt-get autoremove -y
 
